@@ -236,42 +236,32 @@ function playAgain(){
 
 
 function play(type) {
-    let audio;
+    let piano = Synth.createInstrument('piano');
     switch (type) {
         case "do":
-            audio = document.getElementById("do");
-            audio.play();
+            piano.play('C', 4, 2);
             break;
         case "re":
-            audio = document.getElementById("re");
-            audio.play();
+            piano.play('D', 4, 2);
             break;
         case "mi":
-            audio = document.getElementById("mi");
-            audio.play();
+            piano.play('E', 4, 2);
             break;
         case "fa":
-            audio = document.getElementById("fa");
-            audio.play();
+            piano.play('F', 4, 2);
             break;
         case "sol":
-            audio = document.getElementById("sol");
-            audio.play();
+            piano.play('G', 4, 2);
             break;
         case "la":
-            audio = document.getElementById("la");
-            audio.play();
+            piano.play('A', 4, 2);
             break;
         case "si":
-            audio = document.getElementById("si");
-            audio.play();
+            piano.play('B', 4, 2);
             break;
         case "do_high":
-            audio = document.getElementById("do_high");
-            audio.play();
+            piano.play('C', 5, 2);
             break;
-
-
     }
 
 
