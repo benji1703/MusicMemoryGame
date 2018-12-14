@@ -29,15 +29,9 @@ body {
 	flex-direction: column;
 }
 
-h1 {
-	font-family: 'Gloria Hallelujah', cursive;
-}
-
-
 /*
  * Styles for the deck of cards
  */
-
 
 .deck {
 	width: 85%;
@@ -118,27 +112,13 @@ h1 {
 	opacity: 0.9;
 }
 
-
 /*
  * Styles for the Score Panel
  */
 
-
 .score-panel {
 	text-align: left;
-	margin-bottom: 10px;
-}
-
-.score-panel .stars {
-	margin: 0;
-	padding: 0;
-	display: inline-block;
-	margin: 0 5px 0 0;
-}
-
-.score-panel .stars li {
-	list-style: none;
-	display: inline-block;
+	margin-bottom: 30px;
 }
 
 .score-panel .restart {
@@ -150,20 +130,14 @@ h1 {
 	color: #FFD700;
 }
 
-.fa-repeat {
-	color: #FFD700;
-}
-
 .timer {
 	display: inline-block;
 	margin: 0 1rem;
 }
 
-
 /*
  * Styles for congratulations modal
  */
-
 
 .overlay {
 	position: fixed;
@@ -190,7 +164,6 @@ h1 {
 	width: 85%;
 	position: relative;
 	transition: all 5s ease-in-out;
-	font-family: 'Gloria Hallelujah', cursive;
 }
   
 .popup h2 {
@@ -237,7 +210,6 @@ h1 {
 	display: block;
 	margin: 0 auto;
 	width: 50%;
-	font-family: 'Gloria Hallelujah', cursive;
 	color: #ffffff;
 	border-radius: 5px;
 }
