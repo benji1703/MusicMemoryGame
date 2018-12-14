@@ -10,6 +10,8 @@ const deck = document.getElementById("card-deck");
 let moves = 0;
 let counter = document.querySelector(".moves");
 
+let startedGame = false;
+
 // declaring variable of matchedCards
 let matchedCard = document.getElementsByClassName("match");
 
@@ -72,6 +74,7 @@ function startGame(){
 
 // @description toggles open and show class to display cards
 var displayCard = function (){
+    if (!startedGame) startTimer();
     this.classList.toggle("open");
     this.classList.toggle("show");
     this.classList.toggle("disabled");
@@ -145,7 +148,6 @@ function moveCounter(){
         second = 0;
         minute = 0;
         hour = 0;
-        startTimer();
     }
 }
 
@@ -155,8 +157,9 @@ var second = 0, minute = 0; hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
 function startTimer(){
+    startedGame = true;
     interval = setInterval(function(){
-        timer.innerHTML = minute+"mins "+second+"secs";
+        timer.innerHTML = minute + " mins " + second + " secs";
         second++;
         if(second == 60){
             minute++;
@@ -249,7 +252,7 @@ for (var i = 0; i < cards.length; i++){
 };
 
 $(function() {
-    var button1 = $('#button1');
+    let button1 = $('#button1');
     button1.on('click', function() {
         if (button1.hasClass("btn-success")) {
             button1.removeClass("btn-success").addClass("btn-danger");
