@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Memory Music Game</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <header>
+                <h1>Memory Game</h1>
+            </header>
+
+            <section class="score-panel">
+                <ul class="stars">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                </ul>
+
+                <span class="moves">0</span> Move(s)
+
+                <div class="timer">
+                </div>
+
+                <div class="restart" onclick=startGame()>
+                    <i class="fa fa-repeat"></i>
+                </div>
+            </section>
+
+            <ul class="deck" id="card-deck">
+
+                <li class="card" type="do">
+                    <i class="fa fa-diamond"></i>
+                </li>
+                <li class="card" type="do">
+                    <i class="fa fa-diamond"></i>
+                </li>
+                <li class="card" type="re">
+                    <i class="fa fa-paper-plane-o"></i>
+                </li>
+                <li class="card" type="re">
+                    <i class="fa fa-paper-plane-o"></i>
+                </li>
+                <li class="card" type="mi">
+                    <i class="fa fa-anchor"></i>
+                </li>
+                <li class="card" type="mi">
+                    <i class="fa fa-anchor"></i>
+                </li>
+                <li class="card" type="fa" >
+                    <i class="fa fa-bolt"></i>
+                </li>
+                <li class="card" type="fa" >
+                    <i class="fa fa-bolt"></i>
+                </li>
+                <li class="card" type="sol">
+                    <i class="fa fa-cube"></i>
+                </li>
+                <li class="card" type="sol">
+                    <i class="fa fa-cube"></i>
+                </li>
+                <li class="card" type="la">
+                    <i class="fa fa-leaf"></i>
+                </li>
+                <li class="card" type="la">
+                    <i class="fa fa-leaf"></i>
+                </li>
+                <li class="card" type="si">
+                    <i class="fa fa-bicycle"></i>
+                </li>
+                <li class="card" type="do_high">
+                    <i class="fa fa-bomb"></i>
+                </li>
+                <li class="card" type="do_high">
+                    <i class="fa fa-bomb"></i>
+                </li>
+                <li class="card" type="si">
+                    <i class="fa fa-bicycle"></i>
+                </li>
+            </ul>
+
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <h2>Congratulations 🎉</h2>
+                    <a class="close" href=# >×</a>
+                    <div class="content-1">
+                        Congratulations you're a winner 🎉🎉
+                    </div>
+                    <div class="content-2">
+                        <p>You made <span id=finalMove> </span> moves </p>
+                        <p>in <span id=totalTime> </span> </p>
+                        <p>Rating:  <span id=starRating></span></p>
+                    </div>
+                    <button id="play-again"onclick="playAgain()">
+                        Play again 😄</a>
+                    </button>
+                </div>
+            </div>
+            <div class="audio">
+
+                <audio data-key="65" id="do" src="sounds/middle_c.mp3"></audio>
+                <audio data-key="49" id="c_octave1_sharp_audio" src="sounds/mid_c_sharp.mp3"></audio>
+                <audio data-key="83" id="re" src="sounds/middle_d.mp3"></audio>
+                <audio data-key="50" id="d_octave1_sharp_audio" src="sounds/mid_d_sharp.mp3"></audio>
+                <audio data-key="68" id="mi" src="sounds/middle_e.mp3"></audio>
+                <audio data-key="70" id="fa" src="sounds/middle_f.mp3"></audio>
+                <audio data-key="51" id="f_octave1_sharp_audio" src="sounds/mid_f_sharp.mp3"></audio>
+                <audio data-key="71" id="sol" src="sounds/middle_g.mp3"></audio>
+                <audio data-key="52" id="g_octave1_sharp_audio" src="sounds/mid_g_sharp.mp3"></audio>
+                <audio data-key="72" id="la" src="sounds/middle_a.mp3"></audio>
+                <audio data-key="53" id="a_octave1_sharp_audio" src="sounds/mid_a_sharp.mp3"></audio>
+                <audio data-key="74" id="si" src="sounds/middle_b.mp3"></audio>
+                <audio data-key="82" id="do_high" src="sounds/high_c.mp3"></audio>
+                <audio data-key="54" id="c_octave2_sharp_audio" src="sounds/high_c_sharp.mp3"></audio>
+                <audio data-key="84" id="d_octave2_audio" src="sounds/high_d.mp3"></audio>
+                <audio data-key="55" id="d_octave2_sharp_audio" src="sounds/high_d_sharp.mp3"></audio>
+                <audio data-key="89" id="e_octave2_audio" src="sounds/high_e.mp3"></audio>
+                <audio data-key="85" id="f_octave2_audio" src="sounds/high_f.mp3"></audio>
+                <audio data-key="56" id="f_octave2_sharp_audio" src="sounds/high_f_sharp.mp3"></audio>
+                <audio data-key="73" id="g_octave2_audio" src="sounds/high_g.mp3"></audio>
+                <audio data-key="57" id="g_octave2_sharp_audio" src="sounds/high_g_sharp.mp3"></audio>
+                <audio data-key="79" id="a_octave2_audio" src="sounds/high_a.mp3"></audio>
+                <audio data-key="48" id="a_octave2_sharp_audio" src="sounds/high_a_sharp.mp3"></audio>
+                <audio data-key="80" id="b_octave2_audio" src="sounds/high_b.mp3"></audio>
+
+            </div>
+        </div>
+        <script src="js/app.js"></script>
+    </body>
+</html>
