@@ -18,7 +18,7 @@ body {
 
 body {
 	background: #ffffff;
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Nunito', sans-serif;
 	font-size: 16px;
 }
 
@@ -169,7 +169,7 @@ body {
 .popup h2 {
 	margin-top: 0;
 	color: #333;
-	font-family: Tahoma, Arial, sans-serif;
+	font-family: 'Nunito', sans-serif;
 }
 
 .popup .close {
