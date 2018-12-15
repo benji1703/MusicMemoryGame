@@ -285,6 +285,12 @@ body {
 	}
 }
 
+@media (min-width: 1024px) {
+	.popup2 {
+		width: 50%;
+	}
+}
+
 @media (max-width: 411px) {
 	.deck {
 		width: 120%;
