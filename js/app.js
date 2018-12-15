@@ -1,5 +1,4 @@
 // Variable declaration
-
 let card = document.getElementsByClassName("card");
 let cards = Array.from(card);
 const deck = document.getElementById("card-deck");
@@ -68,8 +67,7 @@ function cardOpen() {
             unmatched();
         }
     }
-};
-
+}
 function matched(){
     openedCards[0].classList.add("match", "disabled");
     openedCards[1].classList.add("match", "disabled");
@@ -124,11 +122,11 @@ function startTimer(){
     interval = setInterval(function(){
         timer.innerHTML = minute + " mins " + second + " secs";
         second++;
-        if(second == 60){
+        if(second === 60){
             minute++;
             second=0;
         }
-        if(minute == 60){
+        if(minute === 60){
             hour++;
             minute = 0;
         }
@@ -139,7 +137,7 @@ function startTimer(){
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     let finalTime;
-    if (matchedCard.length === 2) {
+    if (matchedCard.length === 16) {
         clearInterval(interval);
         finalTime = timer.innerHTML;
         // show congratulations modal
