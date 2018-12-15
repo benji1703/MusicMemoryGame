@@ -13,7 +13,6 @@ let openedCards = [];
 let closeicon = document.querySelector(".close");
 let modal = document.getElementById("popup1");
 
-
 document.body.onload = startGame();
 
 function startGame(){
@@ -140,21 +139,21 @@ function startTimer(){
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     let finalTime;
-    if (matchedCard.length === 16) {
+    if (matchedCard.length === 2) {
         clearInterval(interval);
         finalTime = timer.innerHTML;
         // show congratulations modal
         modal.classList.add("show");
         //showing move, rating, time on modal
+        document.getElementById("gamerName").innerHTML = $("#name").val();
         document.getElementById("finalMove").innerHTML = moves;
         document.getElementById("totalTime").innerHTML = finalTime;
+        document.getElementById("level").innerHTML = $("#button1").val();
         //closeicon on modal
         closeModal();
     }
 }
 
-
-// @description close icon on modal
 function closeModal(){
     closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
@@ -162,13 +161,10 @@ function closeModal(){
     });
 }
 
-
-// @desciption for user to play Again 
 function playAgain(){
     modal.classList.remove("show");
     startGame();
 }
-
 
 function play(type) {
     let piano = Synth.createInstrument('piano');
@@ -227,4 +223,11 @@ $(function() {
             $('.card .fa').show()
         }
     });
+});
+
+
+$(function() {
+    $('#startGameBTN').on('click', function () {
+        $('#popup2').removeClass("show")
+    })
 });

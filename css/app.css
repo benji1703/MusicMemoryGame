@@ -116,6 +116,7 @@ body {
 .score-panel .restart {
 	float: right;
 	cursor: pointer;
+	color: #ff9e70;
 }
 
 .timer {
@@ -152,6 +153,15 @@ body {
 	width: 85%;
 	position: relative;
 	transition: all 5s ease-in-out;
+}
+
+.popup2 {
+	margin: 70px auto;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+	width: 85%;
+	position: relative;
 }
   
 .popup h2 {
