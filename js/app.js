@@ -1,58 +1,26 @@
-// cards array holds all cards
+// Variable declaration
+
 let card = document.getElementsByClassName("card");
-let cards = [...card];
-console.log(cards);
-
-// deck of all cards in game
+let cards = Array.from(card);
 const deck = document.getElementById("card-deck");
-
-// declaring move variable
 let moves = 0;
 let counter = document.querySelector(".moves");
-
 let startedGame = false;
-
-// declaring variable of matchedCards
 let matchedCard = document.getElementsByClassName("match");
+let openedCards = [];
 
-// close icon in modal
+// Modal
 let closeicon = document.querySelector(".close");
-
-// declare modal
 let modal = document.getElementById("popup1");
 
-// array for opened cards
-var openedCards = [];
 
-
-// @description shuffles cards
-// @param {array}
-// @returns shuffledarray
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-};
-
-
-// @description shuffles cards when page is refreshed / loads
 document.body.onload = startGame();
 
-
-// @description function to start a new play 
 function startGame(){
     // shuffle deck
     cards = shuffle(cards);
     // remove all exisiting classes from each card
-    for (var i = 0; i < cards.length; i++){
+    for (let i = 0; i < cards.length; i++){
         deck.innerHTML = "";
         [].forEach.call(cards, function(item) {
             deck.appendChild(item);
@@ -66,26 +34,34 @@ function startGame(){
     second = 0;
     minute = 0;
     hour = 0;
-    var timer = document.querySelector(".timer");
+    let timer = document.querySelector(".timer");
     timer.innerHTML = "0 mins 0 secs";
     clearInterval(interval);
 }
 
+function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
 
-// @description toggles open and show class to display cards
-var displayCard = function (){
+let displayCard = function (){
     if (!startedGame) startTimer();
     this.classList.toggle("open");
     this.classList.toggle("show");
     this.classList.toggle("disabled");
 };
 
-
-// @description add opened cards to OpenedCards list and check if cards are match or not
 function cardOpen() {
     openedCards.push(this);
-    var len = openedCards.length;
-    if(len === 2){
+    let len = openedCards.length;
+    if (len === 2){
         moveCounter();
         if(openedCards[0].type === openedCards[1].type){
             matched();
@@ -95,8 +71,6 @@ function cardOpen() {
     }
 };
 
-
-// @description when cards match
 function matched(){
     openedCards[0].classList.add("match", "disabled");
     openedCards[1].classList.add("match", "disabled");
@@ -105,8 +79,6 @@ function matched(){
     openedCards = [];
 }
 
-
-// description when cards don't match
 function unmatched(){
     openedCards[0].classList.add("unmatched");
     openedCards[1].classList.add("unmatched");
@@ -119,40 +91,32 @@ function unmatched(){
     },1100);
 }
 
-
-// @description disable cards temporarily
 function disable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.add('disabled');
     });
 }
 
-
-// @description enable cards and disable matched cards
 function enable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.remove('disabled');
-        for(var i = 0; i < matchedCard.length; i++){
+        for(let i = 0; i < matchedCard.length; i++){
             matchedCard[i].classList.add("disabled");
         }
     });
 }
 
-
-// @description count player's moves
 function moveCounter(){
     moves++;
     counter.innerHTML = moves;
     //start timer on first click
-    if(moves == 1){
+    if(moves === 1){
         second = 0;
         minute = 0;
         hour = 0;
     }
 }
 
-
-// @description game timer
 var second = 0, minute = 0; hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
@@ -175,20 +139,18 @@ function startTimer(){
 
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
-    if (matchedCard.length == 16){
+    let finalTime;
+    if (matchedCard.length === 16) {
         clearInterval(interval);
         finalTime = timer.innerHTML;
-
         // show congratulations modal
         modal.classList.add("show");
-
         //showing move, rating, time on modal
         document.getElementById("finalMove").innerHTML = moves;
         document.getElementById("totalTime").innerHTML = finalTime;
-
         //closeicon on modal
         closeModal();
-    };
+    }
 }
 
 
@@ -249,7 +211,7 @@ for (var i = 0; i < cards.length; i++){
     card.addEventListener("click", cardOpen);
     card.addEventListener("click", congratulations);
     card.addEventListener("click", playSound);
-};
+}
 
 $(function() {
     let button1 = $('#button1');

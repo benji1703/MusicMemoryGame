@@ -29,10 +29,6 @@ body {
 	flex-direction: column;
 }
 
-/*
- * Styles for the deck of cards
- */
-
 .deck {
 	width: 85%;
 	background: #716F71;
@@ -112,10 +108,6 @@ body {
 	opacity: 0.9;
 }
 
-/*
- * Styles for the Score Panel
- */
-
 .score-panel {
 	text-align: left;
 	margin-bottom: 30px;
@@ -193,10 +185,6 @@ body {
 .show {
 	visibility: visible !important;
 	opacity: 100 !important;
-}
-
-#starRating li {
-	display: inline-block;
 }
 
 #play-again {
@@ -281,25 +269,29 @@ body {
 	}
 }
 
-
-/****** Media queries
-***************************/
-
-
-@media (max-width: 320px) {
+@media (max-width: 420px) {
 	.deck {
-		width: 85%;
-	}
-
-	.deck .card {
-		height: 4.7rem;
-		width: 4.7rem;
+		width: 110%;
 	}
 }
 
+@media (max-width: 411px) {
+	.deck {
+		width: 120%;
+	}
+}
 
-/* For Tablets and larger screens
-****************/
+@media (max-width: 320px) {
+	.deck {
+		width: 120%;
+	}
+
+	.deck .card {
+		height: 2.7rem;
+		width: 2.7rem;
+		margin: 3px;
+	}
+}
 
 @media (min-width: 768px) {
 	.container {
