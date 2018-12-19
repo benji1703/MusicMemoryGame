@@ -87,7 +87,7 @@ body {
 
 .deck .card.match {
 	cursor: default;
-	background: #E5F720;
+	background: #5ef756;
 	font-size: 33px;
 	animation-name: rubberBand;
 	-webkit-backface-visibility: visible !important;

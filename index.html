@@ -27,12 +27,11 @@
                 </div>
             </section>
             <ul class="deck" id="card-deck">
-
                 <li class="card" type="do">
-                    <i class="fa fa-diamond"></i>
+                    <i class="fa fa-music"></i>
                 </li>
                 <li class="card" type="do">
-                    <i class="fa fa-diamond"></i>
+                    <i class="fa fa-music"></i>
                 </li>
                 <li class="card" type="re">
                     <i class="fa fa-paper-plane-o"></i>
@@ -125,6 +124,28 @@
                     <br>
                     <div class="modal-footer">
                         <a href="#" id="startGameBTN" class="btn btn-success">Start Game</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup3" class="overlay">
+                <div class="popup">
+                    <div class="modal-header">
+                        <h3> Great </h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeNoteModal()">×</button>
+                        <br>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h3> That is a <span id=lastNote> </span> </h3>
+                        <hr class="col-xs-12">
+                    </div>
+                    <div class="modal-body text-center">
+                        Play the note again?
+                        <br><br>
+                        <button type="button" class="btn" id="playnote" onclick="playLastMatchedNote()">Play</button>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn btn-success" onclick="closeNoteModal()">Continue
+                        </button>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ let counter = document.querySelector(".moves");
 let startedGame = false;
 let matchedCard = document.getElementsByClassName("match");
 let openedCards = [];
+let lastMatchedNote = {};
 
 // Modal
 let closeicon = document.querySelector(".close");
@@ -62,6 +63,7 @@ function cardOpen() {
     if (len === 2){
         moveCounter();
         if(openedCards[0].type === openedCards[1].type){
+            lastMatchedNote = openedCards[0].type;
             matched();
         } else {
             unmatched();
@@ -74,6 +76,7 @@ function matched(){
     openedCards[0].classList.remove("show", "open", "no-event");
     openedCards[1].classList.remove("show", "open", "no-event");
     openedCards = [];
+    showNoteModal();
 }
 
 function unmatched(){
@@ -133,6 +136,19 @@ function startTimer(){
     },1000);
 }
 
+function showNoteModal() {
+    $("#popup3").addClass("show");
+    document.getElementById("lastNote").innerHTML = lastMatchedNote.toString().toUpperCase();
+}
+
+function closeNoteModal() {
+    $("#popup3").removeClass("show");
+}
+
+function playLastMatchedNote() {
+    console.log(lastMatchedNote);
+    play(lastMatchedNote);
+}
 
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
