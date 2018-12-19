@@ -207,20 +207,17 @@ for (var i = 0; i < cards.length; i++){
     card.addEventListener("click", playSound);
 }
 
-$(function() {
-    let button1 = $('#button1');
-    button1.on('click', function() {
-        if (button1.hasClass("btn-success")) {
-            button1.removeClass("btn-success").addClass("btn-danger");
-            button1.val("Hard");
-            $('.card .fa').hide()
-        }
-        else {
-            button1.removeClass("btn-danger").addClass("btn-success");
-            button1.val("Easy");
-            $('.card .fa').show()
-        }
-    });
+$('.btn-group .btn').on('click', function() {
+    if ($(this).val() === "easy") {
+        $('.btn-group .btn').css("font-weight", "normal");
+        $(this).css("font-weight","bold");
+        $('.card .fa').show()
+    }
+    else {
+        $('.btn-group .btn').css("font-weight", "normal");
+        $(this).css("font-weight","bold");
+        $('.card .fa').hide()
+    }
 });
 
 
