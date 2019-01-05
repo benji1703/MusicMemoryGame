@@ -79,7 +79,7 @@ function matched(){
     openedCards[0].classList.remove("show", "open", "no-event");
     openedCards[1].classList.remove("show", "open", "no-event");
     openedCards = [];
-    showNoteModal();
+    if (matchedCard.length < 16) showNoteModal();
 }
 
 function unmatched(){
