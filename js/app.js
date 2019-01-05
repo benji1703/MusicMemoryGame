@@ -289,8 +289,6 @@ function getCollectionFromMongo() {
     });
 }
 
-getCollectionFromMongo();
-
 
 
 
