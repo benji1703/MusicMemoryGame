@@ -8,6 +8,9 @@ let startedGame = false;
 let matchedCard = document.getElementsByClassName("match");
 let openedCards = [];
 let lastMatchedNote = {};
+let leaderBoardByTime = {};
+let gameLevel;
+let id = 0;
 
 // Modal
 let closeicon = document.querySelector(".close");
@@ -158,11 +161,14 @@ function congratulations(){
         finalTime = timer.innerHTML;
         // show congratulations modal
         modal.classList.add("show");
+        // Posting to MongoDB
+        postToMongo($("#name").val(), moves, finalTime, gameLevel);
+        getCollectionFromMongo();
         //showing move, rating, time on modal
         document.getElementById("gamerName").innerHTML = $("#name").val();
         document.getElementById("finalMove").innerHTML = moves;
         document.getElementById("totalTime").innerHTML = finalTime;
-        document.getElementById("level").innerHTML = $("#button1").val();
+        document.getElementById("level").innerHTML = gameLevel;
         //closeicon on modal
         closeModal();
     }
@@ -227,12 +233,14 @@ $('.btn-group .btn').on('click', function() {
     if ($(this).val() === "easy") {
         $('.btn-group .btn').css("font-weight", "normal");
         $(this).css("font-weight","bold");
-        $('.card .fa').show()
+        $('.card .fa').show();
+        gameLevel = "Easy"
     }
     else {
         $('.btn-group .btn').css("font-weight", "normal");
         $(this).css("font-weight","bold");
-        $('.card .fa').hide()
+        $('.card .fa').hide();
+        gameLevel = "Hard"
     }
 });
 
@@ -242,3 +250,47 @@ $(function() {
         $('#popup2').removeClass("show")
     })
 });
+
+function postToMongo(gamerName, finalMove, totalTime, level) {
+    $.ajax( { url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
+        data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level} ),
+        type: "POST",
+        contentType: "application/json" } );
+}
+
+var transform = {
+    tag: 'tr',
+    children: [{
+        "tag": "td",
+        "html": function() {return ++id}
+    }, {
+        "tag": "td",
+        "html": "${gamerName}"
+    }, {
+        "tag": "td",
+        "html": "${finalMove}"
+    }, {
+        "tag": "td",
+        "html": "${totalTime}"
+    }, {
+        "tag": "td",
+        "html": "${level}"
+    }]
+};
+
+function getCollectionFromMongo() {
+    $.ajax( { url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
+        type: "GET",
+        contentType: "application/json",
+        success: function(data){
+            leaderBoardByTime = (_.sortBy(data, "finalMove").slice(0, 10));
+            $('#leaderboard > tbody').json2html(leaderBoardByTime,transform);
+        }
+    });
+}
+
+getCollectionFromMongo();
+
+
+
+
