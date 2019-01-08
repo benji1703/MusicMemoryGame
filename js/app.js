@@ -11,6 +11,7 @@ let lastMatchedNote = {};
 let leaderBoardByTime = {};
 let gameLevel;
 let id = 0;
+let gamePlay = [];
 
 // Modal
 let closeicon = document.querySelector(".close");
@@ -58,6 +59,7 @@ let displayCard = function (){
     this.classList.toggle("open");
     this.classList.toggle("show");
     this.classList.toggle("disabled");
+    gamePlay.push(this.type);
 };
 
 function cardOpen() {
@@ -162,7 +164,7 @@ function congratulations(){
         // show congratulations modal
         modal.classList.add("show");
         // Posting to MongoDB
-        postToMongo($("#name").val(), moves, finalTime, gameLevel);
+        postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay);
         getCollectionFromMongo();
         //showing move, rating, time on modal
         document.getElementById("gamerName").innerHTML = $("#name").val();
@@ -251,9 +253,9 @@ $(function() {
     })
 });
 
-function postToMongo(gamerName, finalMove, totalTime, level) {
+function postToMongo(gamerName, finalMove, totalTime, level, gamePlay) {
     $.ajax( { url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
-        data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level} ),
+        data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level, "gamePlay": gamePlay} ),
         type: "POST",
         contentType: "application/json" } );
 }
