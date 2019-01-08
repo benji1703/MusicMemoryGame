@@ -255,7 +255,7 @@ $(function() {
 
 function postToMongo(gamerName, finalMove, totalTime, level, gamePlay) {
     $.ajax( { url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
-        data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level, "gamePlay": gamePlay} ),
+        data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level, "gamePlay": gamePlay, "UTCTime": Date.now()} ),
         type: "POST",
         contentType: "application/json" } );
 }
