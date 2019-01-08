@@ -143,7 +143,7 @@ function startTimer(){
 
 function showNoteModal() {
     $("#popup3").addClass("show");
-    document.getElementById("lastNote").innerHTML = lastMatchedNote.toString().toUpperCase();
+    document.getElementById("lastNote").innerHTML = convertMidiNumberToNote(lastMatchedNote);
 }
 
 function closeNoteModal() {
@@ -191,30 +191,76 @@ function playAgain(){
 function play(type) {
     let piano = Synth.createInstrument('piano');
     switch (type) {
-        case "do":
+        case "60":
             piano.play('C', 4, 2);
             break;
-        case "re":
+        case "61":
+            piano.play('C#', 4, 2);
+            break;
+        case "62":
             piano.play('D', 4, 2);
             break;
-        case "mi":
+        case "63":
+            piano.play('D#', 4, 2);
+            break;
+        case "64":
             piano.play('E', 4, 2);
             break;
-        case "fa":
+        case "65":
             piano.play('F', 4, 2);
             break;
-        case "sol":
+        case "66":
+            piano.play('F#', 4, 2);
+            break;
+        case "67":
             piano.play('G', 4, 2);
             break;
-        case "la":
+        case "68":
+            piano.play('G#', 4, 2);
+            break;
+        case "69":
             piano.play('A', 4, 2);
             break;
-        case "si":
+        case "70":
+            piano.play('A#', 4, 2);
+            break;
+        case "71":
             piano.play('B', 4, 2);
             break;
-        case "do_high":
+        case "72":
             piano.play('C', 5, 2);
             break;
+    }
+}
+
+function convertMidiNumberToNote(midiNm) {
+    switch (midiNm) {
+        case "60":
+            return "Do";
+        case "61":
+            return "Do #";
+        case "62":
+            return "Re";
+        case "63":
+            return "Re #";
+        case "64":
+            return "Mi";
+        case "65":
+            return "Fa";
+        case "66":
+            return "Fa #";
+        case "67":
+            return "Sol";
+        case "68":
+            return "Sol #";
+        case "69":
+            return "La";
+        case "70":
+            return "La #";
+        case "71":
+            return "Si";
+        case "72":
+            return "Do High";
     }
 }
 
@@ -258,6 +304,38 @@ function postToMongo(gamerName, finalMove, totalTime, level, gamePlay) {
         data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level, "gamePlay": gamePlay, "UTCTime": Date.now()} ),
         type: "POST",
         contentType: "application/json" } );
+}
+
+function createEasyBoard() {
+    resetBoardToBlank();
+    removeElementsByClass("harder");
+}
+
+function createHardBoard() {
+    resetBoardToBlank();
+    removeElementsByClass("easy");
+    $("#card-deck").addClass("hard");
+
+}
+
+function removeElementsByClass(className){
+    let elements = document.getElementsByClassName(className);
+    for (let element of elements) {
+        element.parentNode.style.display = "none";
+    }
+}
+
+function resetBoardToBlank() {
+    let elements = document.getElementsByClassName("easy");
+    console.log(elements);
+    for (let element of elements) {
+        element.parentNode.style.display = "";
+    };
+    let elements2 = document.getElementsByClassName("harder");
+    for (let element of elements2) {
+        element.parentNode.style.display = "";
+    };
+    $("#card-deck").removeClass("hard");
 }
 
 var transform = {

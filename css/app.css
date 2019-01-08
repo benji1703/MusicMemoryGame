@@ -319,6 +319,11 @@ body {
 		height: 680px;
 	}
 
+	.deck.hard{
+		width: 880px;
+		height: 680px;
+	}
+
 	.deck .card {
 		height: 125px;
 		width: 125px;
