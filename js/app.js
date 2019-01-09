@@ -12,12 +12,18 @@ let leaderBoardByTime = {};
 let gameLevel;
 let id = 0;
 let gamePlay = [];
+let sizeOfBoard;
 
 // Modal
 let closeicon = document.querySelector(".close");
 let modal = document.getElementById("popup1");
 
-document.body.onload = startGame();
+document.body.onload = startGameWithEasy();
+
+function startGameWithEasy(){
+    startGame();
+    createEasyBoard();
+}
 
 function startGame(){
     // shuffle deck
@@ -164,7 +170,7 @@ function congratulations(){
         // show congratulations modal
         modal.classList.add("show");
         // Posting to MongoDB
-        postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay);
+        postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard);
         getCollectionFromMongo();
         //showing move, rating, time on modal
         document.getElementById("gamerName").innerHTML = $("#name").val();
@@ -299,9 +305,9 @@ $(function() {
     })
 });
 
-function postToMongo(gamerName, finalMove, totalTime, level, gamePlay) {
+function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoard) {
     $.ajax( { url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
-        data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level, "gamePlay": gamePlay, "UTCTime": Date.now()} ),
+        data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level, "gamePlay": gamePlay, "sizeOfBoard": sizeOfBoard, "UTCTime": Date.now()} ),
         type: "POST",
         contentType: "application/json" } );
 }
@@ -309,13 +315,14 @@ function postToMongo(gamerName, finalMove, totalTime, level, gamePlay) {
 function createEasyBoard() {
     resetBoardToBlank();
     removeElementsByClass("harder");
+    sizeOfBoard = "4*4";
 }
 
 function createHardBoard() {
     resetBoardToBlank();
     removeElementsByClass("easy");
     $("#card-deck").addClass("hard");
-
+    sizeOfBoard = "6*4";
 }
 
 function removeElementsByClass(className){
