@@ -177,7 +177,6 @@ function closeNoteModal() {
 }
 
 function playLastMatchedNote() {
-    console.log(lastMatchedNote);
     play(lastMatchedNote);
 }
 
@@ -328,7 +327,6 @@ for (var i = 0; i < cards.length; i++) {
 $('#buttonLevel .btn').on('click', function () {
     if ($(this).val() === "easy") {
         $('.btn-group .btn').css("font-weight", "normal");
-        console.log(this);
         $(this).css("font-weight", "bold");
         $('#buttonLevel>.btn-group>.focus').removeClass('focus');
         $(this).addClass('focus');
@@ -404,7 +402,6 @@ function removeElementsByClass(className) {
 
 function resetBoardToBlank() {
     let elements = document.getElementsByClassName("easy");
-    console.log(elements);
     for (let element of elements) {
         element.parentNode.style.display = "";
     };
