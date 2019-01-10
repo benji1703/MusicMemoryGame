@@ -87,7 +87,11 @@ function matched(){
     openedCards[0].classList.remove("show", "open", "no-event");
     openedCards[1].classList.remove("show", "open", "no-event");
     openedCards = [];
-    if (matchedCard.length < 16) showNoteModal();
+    if (sizeOfBoard === "4*4") {
+        if (matchedCard.length < 16) showNoteModal();
+    } else {
+        if (matchedCard.length < 24) showNoteModal();
+    }
 }
 
 function unmatched(){
@@ -164,21 +168,40 @@ function playLastMatchedNote() {
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     let finalTime;
-    if (matchedCard.length === 16) {
-        clearInterval(interval);
-        finalTime = timer.innerHTML;
-        // show congratulations modal
-        modal.classList.add("show");
-        // Posting to MongoDB
-        postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard);
-        getCollectionFromMongo();
-        //showing move, rating, time on modal
-        document.getElementById("gamerName").innerHTML = $("#name").val();
-        document.getElementById("finalMove").innerHTML = moves;
-        document.getElementById("totalTime").innerHTML = finalTime;
-        document.getElementById("level").innerHTML = gameLevel;
-        //closeicon on modal
-        closeModal();
+    if (sizeOfBoard === "4*4") {
+        if (matchedCard.length === 16) {
+            clearInterval(interval);
+            finalTime = timer.innerHTML;
+            // show congratulations modal
+            modal.classList.add("show");
+            // Posting to MongoDB
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard);
+            getCollectionFromMongo();
+            //showing move, rating, time on modal
+            document.getElementById("gamerName").innerHTML = $("#name").val();
+            document.getElementById("finalMove").innerHTML = moves;
+            document.getElementById("totalTime").innerHTML = finalTime;
+            document.getElementById("level").innerHTML = gameLevel;
+            //closeicon on modal
+            closeModal();
+        }
+    } else {
+        if (matchedCard.length === 24) {
+            clearInterval(interval);
+            finalTime = timer.innerHTML;
+            // show congratulations modal
+            modal.classList.add("show");
+            // Posting to MongoDB
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard);
+            getCollectionFromMongo();
+            //showing move, rating, time on modal
+            document.getElementById("gamerName").innerHTML = $("#name").val();
+            document.getElementById("finalMove").innerHTML = moves;
+            document.getElementById("totalTime").innerHTML = finalTime;
+            document.getElementById("level").innerHTML = gameLevel;
+            //closeicon on modal
+            closeModal();
+        }
     }
 }
 
