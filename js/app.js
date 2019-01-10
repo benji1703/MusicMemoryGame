@@ -20,18 +20,18 @@ let modal = document.getElementById("popup1");
 
 document.body.onload = startGameWithEasy();
 
-function startGameWithEasy(){
+function startGameWithEasy() {
     startGame();
     createEasyBoard();
 }
 
-function startGame(){
+function startGame() {
     // shuffle deck
     cards = shuffle(cards);
     // remove all exisiting classes from each card
-    for (let i = 0; i < cards.length; i++){
+    for (let i = 0; i < cards.length; i++) {
         deck.innerHTML = "";
-        [].forEach.call(cards, function(item) {
+        [].forEach.call(cards, function (item) {
             deck.appendChild(item);
         });
         cards[i].classList.remove("show", "open", "match", "disabled");
@@ -49,7 +49,8 @@ function startGame(){
 }
 
 function shuffle(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length,
+        temporaryValue, randomIndex;
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -60,7 +61,7 @@ function shuffle(array) {
     return array;
 }
 
-let displayCard = function (){
+let displayCard = function () {
     if (!startedGame) startTimer();
     this.classList.toggle("open");
     this.classList.toggle("show");
@@ -71,9 +72,9 @@ let displayCard = function (){
 function cardOpen() {
     openedCards.push(this);
     let len = openedCards.length;
-    if (len === 2){
+    if (len === 2) {
         moveCounter();
-        if(openedCards[0].type === openedCards[1].type){
+        if (openedCards[0].type === openedCards[1].type) {
             lastMatchedNote = openedCards[0].type;
             matched();
         } else {
@@ -81,7 +82,8 @@ function cardOpen() {
         }
     }
 }
-function matched(){
+
+function matched() {
     openedCards[0].classList.add("match", "disabled");
     openedCards[1].classList.add("match", "disabled");
     openedCards[0].classList.remove("show", "open", "no-event");
@@ -94,61 +96,64 @@ function matched(){
     }
 }
 
-function unmatched(){
+function unmatched() {
     openedCards[0].classList.add("unmatched");
     openedCards[1].classList.add("unmatched");
     disable();
-    setTimeout(function(){
-        openedCards[0].classList.remove("show", "open", "no-event","unmatched");
-        openedCards[1].classList.remove("show", "open", "no-event","unmatched");
+    setTimeout(function () {
+        openedCards[0].classList.remove("show", "open", "no-event", "unmatched");
+        openedCards[1].classList.remove("show", "open", "no-event", "unmatched");
         enable();
         openedCards = [];
-    },1100);
+    }, 1100);
 }
 
-function disable(){
-    Array.prototype.filter.call(cards, function(card){
+function disable() {
+    Array.prototype.filter.call(cards, function (card) {
         card.classList.add('disabled');
     });
 }
 
-function enable(){
-    Array.prototype.filter.call(cards, function(card){
+function enable() {
+    Array.prototype.filter.call(cards, function (card) {
         card.classList.remove('disabled');
-        for(let i = 0; i < matchedCard.length; i++){
+        for (let i = 0; i < matchedCard.length; i++) {
             matchedCard[i].classList.add("disabled");
         }
     });
 }
 
-function moveCounter(){
+function moveCounter() {
     moves++;
     counter.innerHTML = moves;
     //start timer on first click
-    if(moves === 1){
+    if (moves === 1) {
         second = 0;
         minute = 0;
         hour = 0;
     }
 }
 
-var second = 0, minute = 0; hour = 0;
+var second = 0,
+    minute = 0;
+hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
-function startTimer(){
+
+function startTimer() {
     startedGame = true;
-    interval = setInterval(function(){
+    interval = setInterval(function () {
         timer.innerHTML = minute + " mins " + second + " secs";
         second++;
-        if(second === 60){
+        if (second === 60) {
             minute++;
-            second=0;
+            second = 0;
         }
-        if(minute === 60){
+        if (minute === 60) {
             hour++;
             minute = 0;
         }
-    },1000);
+    }, 1000);
 }
 
 function showNoteModal() {
@@ -166,7 +171,7 @@ function playLastMatchedNote() {
 }
 
 // @description congratulations when all cards match, show modal and moves, time and rating
-function congratulations(){
+function congratulations() {
     let finalTime;
     if (sizeOfBoard === "4*4") {
         if (matchedCard.length === 16) {
@@ -205,14 +210,14 @@ function congratulations(){
     }
 }
 
-function closeModal(){
-    closeicon.addEventListener("click", function(e){
+function closeModal() {
+    closeicon.addEventListener("click", function (e) {
         modal.classList.remove("show");
         startGame();
     });
 }
 
-function playAgain(){
+function playAgain() {
     modal.classList.remove("show");
     startGame();
 }
@@ -298,7 +303,7 @@ function playSound() {
 }
 
 // loop to add event listeners to each card
-for (var i = 0; i < cards.length; i++){
+for (var i = 0; i < cards.length; i++) {
     card = cards[i];
     card.addEventListener("click", displayCard);
     card.addEventListener("click", cardOpen);
@@ -306,33 +311,42 @@ for (var i = 0; i < cards.length; i++){
     card.addEventListener("click", playSound);
 }
 
-$('.btn-group .btn').on('click', function() {
+$('.btn-group .btn').on('click', function () {
     if ($(this).val() === "easy") {
         $('.btn-group .btn').css("font-weight", "normal");
-        $(this).css("font-weight","bold");
+        $(this).css("font-weight", "bold");
         $('.card .fa').show();
         gameLevel = "Easy"
-    }
-    else {
+    } else {
         $('.btn-group .btn').css("font-weight", "normal");
-        $(this).css("font-weight","bold");
+        $(this).css("font-weight", "bold");
         $('.card .fa').hide();
         gameLevel = "Hard"
     }
 });
 
 
-$(function() {
+$(function () {
     $('#startGameBTN').on('click', function () {
         $('#popup2').removeClass("show")
     })
 });
 
 function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoard) {
-    $.ajax( { url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
-        data: JSON.stringify( { "gamerName" : gamerName, "finalMove": finalMove, "totalTime": totalTime, "level": level, "gamePlay": gamePlay, "sizeOfBoard": sizeOfBoard, "UTCTime": Date.now()} ),
+    $.ajax({
+        url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
+        data: JSON.stringify({
+            "gamerName": gamerName,
+            "finalMove": finalMove,
+            "totalTime": totalTime,
+            "level": level,
+            "gamePlay": gamePlay,
+            "sizeOfBoard": sizeOfBoard,
+            "UTCTime": Date.now()
+        }),
         type: "POST",
-        contentType: "application/json" } );
+        contentType: "application/json"
+    });
 }
 
 function createEasyBoard() {
@@ -348,7 +362,7 @@ function createHardBoard() {
     sizeOfBoard = "6*4";
 }
 
-function removeElementsByClass(className){
+function removeElementsByClass(className) {
     let elements = document.getElementsByClassName(className);
     for (let element of elements) {
         element.parentNode.style.display = "none";
@@ -372,7 +386,9 @@ var transform = {
     tag: 'tr',
     children: [{
         "tag": "td",
-        "html": function() {return ++id}
+        "html": function () {
+            return ++id
+        }
     }, {
         "tag": "td",
         "html": "${gamerName}"
@@ -389,16 +405,13 @@ var transform = {
 };
 
 function getCollectionFromMongo() {
-    $.ajax( { url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
+    $.ajax({
+        url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
         type: "GET",
         contentType: "application/json",
-        success: function(data){
+        success: function (data) {
             leaderBoardByTime = (_.sortBy(data, "finalMove").slice(0, 10));
-            $('#leaderboard > tbody').json2html(leaderBoardByTime,transform);
+            $('#leaderboard > tbody').json2html(leaderBoardByTime, transform);
         }
     });
 }
-
-
-
-
