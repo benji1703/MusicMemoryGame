@@ -48,6 +48,17 @@ function startGame() {
     clearInterval(interval);
 }
 
+function validateStartingForm() {
+    if (!$("#name").val()) {
+        alert('Please insert a Name!');
+        location.reload(); 
+    }
+}
+
+function reshowTheFormWithERR() {
+    $("#popup2").addClass('show');
+}
+
 function shuffle(array) {
     let currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -311,17 +322,37 @@ for (var i = 0; i < cards.length; i++) {
     card.addEventListener("click", playSound);
 }
 
-$('.btn-group .btn').on('click', function () {
+// Level Button
+$('#buttonLevel .btn').on('click', function () {
     if ($(this).val() === "easy") {
         $('.btn-group .btn').css("font-weight", "normal");
+        console.log(this);
         $(this).css("font-weight", "bold");
+        $('#buttonLevel>.btn-group>.focus').removeClass('focus');
+        $(this).addClass('focus');
         $('.card .fa').show();
         gameLevel = "Easy"
     } else {
         $('.btn-group .btn').css("font-weight", "normal");
         $(this).css("font-weight", "bold");
+        $('#buttonLevel>.btn-group>.focus').removeClass('focus');
+        $(this).addClass('focus');
         $('.card .fa').hide();
         gameLevel = "Hard"
+    }
+});
+
+// Board size button
+$('#boardSize .btn').on('click', function () {
+    if ($(this).val() === "8") {
+        $('.btn-group .btn').css("font-weight", "normal");
+        $('#boardSize>.btn-group>.focus').removeClass('focus');
+        $(this).addClass('focus');
+    } else {
+        $('.btn-group .btn').css("font-weight", "normal");
+        $(this).css("font-weight", "bold");
+        $('#boardSize>.btn-group>.focus').removeClass('focus');
+        $(this).addClass('focus');
     }
 });
 
