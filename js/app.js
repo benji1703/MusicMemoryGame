@@ -198,6 +198,7 @@ function congratulations() {
             document.getElementById("finalMove").innerHTML = moves;
             document.getElementById("totalTime").innerHTML = finalTime;
             document.getElementById("level").innerHTML = gameLevel;
+            startedGame = false
             //closeicon on modal
             closeModal();
         }
@@ -215,6 +216,7 @@ function congratulations() {
             document.getElementById("finalMove").innerHTML = moves;
             document.getElementById("totalTime").innerHTML = finalTime;
             document.getElementById("level").innerHTML = gameLevel;
+            startedGame = false
             //closeicon on modal
             closeModal();
         }
