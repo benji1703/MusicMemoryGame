@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed163218-dfd1-4356-827a-1f83d2c768a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MusicMemoryGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MusicMemoryGame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/app.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/app.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,16 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-              <folding>
-                <element signature="n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="247">
+              <caret line="45" column="43" lean-forward="true" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -41,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2806">
-              <caret line="122" selection-start-line="122" selection-end-line="122" />
+            <state relative-caret-position="3381">
+              <caret line="147" selection-start-line="147" selection-end-line="147" />
             </state>
           </provider>
         </entry>
@@ -60,10 +51,10 @@
         <entry file="file://$PROJECT_DIR$/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="7590">
-              <caret line="330" selection-start-line="330" selection-end-line="330" />
+              <caret line="335" selection-start-line="335" selection-end-line="335" />
               <folding>
-                <marker date="1546716684912" expanded="true" signature="0:33" ph="..." />
-                <marker date="1546716684912" expanded="true" signature="0:4660" ph="..." />
+                <marker date="1547105502634" expanded="true" signature="0:33" ph="..." />
+                <marker date="1547105502634" expanded="true" signature="0:4710" ph="..." />
               </folding>
             </state>
           </provider>
@@ -120,8 +111,8 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/audiosynth.js" />
         <option value="$PROJECT_DIR$/css/app.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/app.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -137,9 +128,9 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2552" />
-    <option name="width" value="1297" />
-    <option name="height" value="1398" />
+    <option name="x" value="2551" />
+    <option name="width" value="1298" />
+    <option name="height" value="1399" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -205,6 +196,7 @@
       <workItem from="1545505626111" duration="188000" />
       <workItem from="1546707174487" duration="12270000" />
       <workItem from="1546720038475" duration="72000" />
+      <workItem from="1547922337129" duration="182000" />
     </task>
     <task id="LOCAL-00001" summary="v0.1 Changed the MP3 to JS pure">
       <created>1544793829082</created>
@@ -336,7 +328,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49548000" />
+    <option name="totallyTimeSpent" value="49730000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -348,15 +340,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2554" y="0" width="1037" height="1118" extended-state="0" />
+    <frame x="2553" y="0" width="1038" height="1119" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.172" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17182817" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4962963" weight="0.3279743" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4962963" visible="true" weight="0.32762313" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4977778" weight="0.3995749" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -477,7 +469,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/index.html</url>
-          <line>109</line>
+          <line>140</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -567,6 +559,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="45" column="43" lean-forward="true" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3381">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -577,32 +583,10 @@
     <entry file="file://$PROJECT_DIR$/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7590">
-          <caret line="330" selection-start-line="330" selection-end-line="330" />
+          <caret line="335" selection-start-line="335" selection-end-line="335" />
           <folding>
-            <marker date="1546716684912" expanded="true" signature="0:33" ph="..." />
-            <marker date="1546716684912" expanded="true" signature="0:4660" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2806">
-          <caret line="122" selection-start-line="122" selection-end-line="122" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-          <folding>
-            <element signature="n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <marker date="1547105502634" expanded="true" signature="0:33" ph="..." />
+            <marker date="1547105502634" expanded="true" signature="0:4710" ph="..." />
           </folding>
         </state>
       </provider>
