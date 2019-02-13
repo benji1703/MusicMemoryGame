@@ -190,14 +190,14 @@ function congratulations() {
             // show congratulations modal
             modal.classList.add("show");
             // Posting to MongoDB
-            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard);
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val());
             getCollectionFromMongo();
             //showing move, rating, time on modal
             document.getElementById("gamerName").innerHTML = $("#name").val();
             document.getElementById("finalMove").innerHTML = moves;
             document.getElementById("totalTime").innerHTML = finalTime;
             document.getElementById("level").innerHTML = gameLevel;
-            startedGame = false
+            startedGame = false;
             //closeicon on modal
             closeModal();
         }
@@ -208,14 +208,14 @@ function congratulations() {
             // show congratulations modal
             modal.classList.add("show");
             // Posting to MongoDB
-            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard);
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val());
             getCollectionFromMongo();
             //showing move, rating, time on modal
             document.getElementById("gamerName").innerHTML = $("#name").val();
             document.getElementById("finalMove").innerHTML = moves;
             document.getElementById("totalTime").innerHTML = finalTime;
             document.getElementById("level").innerHTML = gameLevel;
-            startedGame = false
+            startedGame = false;
             //closeicon on modal
             closeModal();
         }
@@ -363,7 +363,7 @@ $(function () {
     })
 });
 
-function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoard) {
+function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoard, age, musical, perfect_p) {
     $.ajax({
         url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
         data: JSON.stringify({
@@ -373,6 +373,9 @@ function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoa
             "level": level,
             "gamePlay": gamePlay,
             "sizeOfBoard": sizeOfBoard,
+            "age": age,
+            "musical": musical,
+            "perfect_p": perfect_p,
             "UTCTime": Date.now()
         }),
         type: "POST",
