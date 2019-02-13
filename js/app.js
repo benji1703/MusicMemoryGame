@@ -9,7 +9,7 @@ let matchedCard = document.getElementsByClassName("match");
 let openedCards = [];
 let lastMatchedNote = {};
 let leaderBoardByTime = {};
-let gameLevel;
+let gameLevel = "Easy";
 let id = 0;
 let gamePlay = [];
 let sizeOfBoard;
@@ -85,7 +85,7 @@ function cardOpen() {
     let len = openedCards.length;
     if (len === 2) {
         moveCounter();
-        if (openedCards[0].type === openedCards[1].type) {
+        if (openedCards[0].type.substring(0,2) === openedCards[1].type.substring(0,2)) {
             lastMatchedNote = openedCards[0].type;
             matched();
         } else {
@@ -236,7 +236,7 @@ function playAgain() {
 
 function play(type) {
     let piano = Synth.createInstrument('piano');
-    switch (type) {
+    switch (type.substring(0,2)) {
         case "60":
             piano.play('C', 4, 2);
             break;
@@ -280,7 +280,7 @@ function play(type) {
 }
 
 function convertMidiNumberToNote(midiNm) {
-    switch (midiNm) {
+    switch (midiNm.substring(0,2)) {
         case "60":
             return "Do";
         case "61":
