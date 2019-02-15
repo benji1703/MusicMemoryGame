@@ -113,6 +113,11 @@ body {
 	margin-bottom: 30px;
 }
 
+.modal-body {
+	max-height: calc(100vh - 210px);
+	overflow-y: auto;
+}
+
 .score-panel .restart {
 	float: right;
 	cursor: pointer;
