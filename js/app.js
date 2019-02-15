@@ -14,6 +14,10 @@ let id = 0;
 let gamePlay = [];
 let sizeOfBoard;
 
+//initialize array of false values. counterOfMistakes = 0
+let array = new Array(24).fill(false);
+let counterOfMistakes = 0;
+
 // Modal
 let closeicon = document.querySelector(".close");
 let modal = document.getElementById("popup1");
@@ -99,6 +103,20 @@ function matched() {
     openedCards[1].classList.add("match", "disabled");
     openedCards[0].classList.remove("show", "open", "no-event");
     openedCards[1].classList.remove("show", "open", "no-event");
+
+    // Added by Ron
+    let num1 = (openedCards[0].type.substring(0,2)) * 2 - 120;
+    if (openedCards[0].type.substring(3,4) !== 'a') {
+        num1++;
+    }
+    let num2 = (openedCards[1].type.substring(0,2)) * 2 - 120;
+    if (openedCards[1].type.substring(3,4) !== 'a') {
+        num2++;
+    }
+    array[num1] = false;
+    array[num2] = false;
+    // End of addition
+
     openedCards = [];
     if (sizeOfBoard === "4*4") {
         if (matchedCard.length < 16) showNoteModal();
@@ -110,6 +128,34 @@ function matched() {
 function unmatched() {
     openedCards[0].classList.add("unmatched");
     openedCards[1].classList.add("unmatched");
+
+    // Added by Ron
+    let checkAOrB = 1;
+    let num1 = (openedCards[0].type.substring(0,2)) * 2 - 120; //first card
+    if (openedCards[0].type.substring(3,4) !== 'a') {
+        checkAOrB = -1;
+        num1++;
+    }
+    let num2 = (openedCards[1].type.substring(0,2)) * 2 - 120; //second card
+    if (openedCards[1].type.substring(3,4) !== 'a') {
+        num2++;
+    }
+    let i;
+    let matchToFirstCard = num1 + checkAOrB;  // the match for first card
+    for (i = 0; i < array.length; i = i + 2) {
+        if((array[i] === true) && (array[i + 1] === true)) { // there is possible match
+            counterOfMistakes++;
+            break;
+        }
+        if(array[matchToFirstCard] === true) { // the player could match the first card he chose
+            counterOfMistakes++;
+            break;
+        }
+    }
+    array[num1] = true;
+    array[num2] = true;
+    // End of addition
+
     disable();
     setTimeout(function () {
         openedCards[0].classList.remove("show", "open", "no-event", "unmatched");
@@ -190,7 +236,7 @@ function congratulations() {
             // show congratulations modal
             modal.classList.add("show");
             // Posting to MongoDB
-            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val());
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes);
             getCollectionFromMongo();
             //showing move, rating, time on modal
             document.getElementById("gamerName").innerHTML = $("#name").val();
@@ -208,7 +254,7 @@ function congratulations() {
             // show congratulations modal
             modal.classList.add("show");
             // Posting to MongoDB
-            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val());
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes);
             getCollectionFromMongo();
             //showing move, rating, time on modal
             document.getElementById("gamerName").innerHTML = $("#name").val();
@@ -363,7 +409,7 @@ $(function () {
     })
 });
 
-function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoard, age, musical, perfect_p) {
+function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoard, age, musical, perfect_p, counterOfMistakes) {
     $.ajax({
         url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
         data: JSON.stringify({
@@ -376,6 +422,7 @@ function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoa
             "age": age,
             "musical": musical,
             "perfect_p": perfect_p,
+            "counterOfMistakes": counterOfMistakes,
             "UTCTime": Date.now()
         }),
         type: "POST",
