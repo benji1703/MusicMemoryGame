@@ -114,8 +114,8 @@ body {
 }
 
 .modal-body {
-	max-height: calc(100vh - 210px);
-	overflow-y: auto;
+	max-height: calc(100vh - 450px);
+	overflow-y: scroll!important;
 }
 
 .score-panel .restart {
