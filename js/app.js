@@ -229,7 +229,25 @@ function playLastMatchedNote() {
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations() {
     let finalTime;
-    if (sizeOfBoard === "4*4") {
+    if (sizeOfBoard === "2*4") {
+        if (matchedCard.length === 8) {
+            clearInterval(interval);
+            finalTime = timer.innerHTML;
+            // show congratulations modal
+            modal.classList.add("show");
+            // Posting to MongoDB
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes);
+            getCollectionFromMongo();
+            //showing move, rating, time on modal
+            document.getElementById("gamerName").innerHTML = $("#name").val();
+            document.getElementById("finalMove").innerHTML = moves;
+            document.getElementById("totalTime").innerHTML = finalTime;
+            document.getElementById("level").innerHTML = gameLevel;
+            startedGame = false;
+            //closeicon on modal
+            closeModal();
+        }
+    } else if (sizeOfBoard === "4*4") {
         if (matchedCard.length === 16) {
             clearInterval(interval);
             finalTime = timer.innerHTML;
@@ -428,6 +446,14 @@ function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoa
         type: "POST",
         contentType: "application/json"
     });
+}
+
+function createBabyBoard() {
+    resetBoardToBlank();
+    removeElementsByClass("baby");
+    removeElementsByClass("harder");
+    $(".deck").height("340px");
+    sizeOfBoard = "2*4";
 }
 
 function createEasyBoard() {
