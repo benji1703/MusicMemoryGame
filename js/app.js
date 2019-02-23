@@ -516,7 +516,9 @@ function getCollectionFromMongo() {
         type: "GET",
         contentType: "application/json",
         success: function (data) {
-            leaderBoardByTime = (_.sortBy(data, "finalMove").slice(0, 10));
+            let leaderBoardByBoardSize = (_.filter(data, ['sizeOfBoard', sizeOfBoard]));
+            let leaderBoardByGameLevel = (_.filter(leaderBoardByBoardSize, ['level', gameLevel]));
+            leaderBoardByTime = (_.sortBy(leaderBoardByGameLevel, "finalMove").slice(0, 10));
             $('#leaderboard > tbody').json2html(leaderBoardByTime, transform);
         }
     });
