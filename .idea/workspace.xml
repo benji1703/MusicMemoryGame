@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ed163218-dfd1-4356-827a-1f83d2c768a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="190" column="72" selection-start-line="190" selection-start-column="72" selection-end-line="190" selection-end-column="72" />
+            <state relative-caret-position="1016">
+              <caret line="283" column="69" selection-start-line="283" selection-start-column="58" selection-end-line="283" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -31,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="525" lean-forward="true" selection-start-line="525" selection-end-line="525" />
+            <state relative-caret-position="760">
+              <caret line="284" column="184" selection-start-line="284" selection-start-column="184" selection-end-line="284" selection-end-column="184" />
             </state>
           </provider>
         </entry>
@@ -54,12 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2277">
+            <state>
               <caret line="99" column="52" selection-start-line="99" selection-start-column="52" selection-end-line="99" selection-end-column="52" />
-              <folding>
-                <marker date="1550219919084" expanded="true" signature="0:33" ph="..." />
-                <marker date="1550219919084" expanded="true" signature="0:4780" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -77,12 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>li</find>
-      <find>/li</find>
-      <find>$</find>
-      <find>star</find>
-      <find>fa-repeat</find>
-      <find>restart</find>
       <find>popup</find>
       <find>modal</find>
       <find>overla</find>
@@ -107,6 +98,12 @@
       <find>modal-</find>
       <find>app.css</find>
       <find>Board Size</find>
+      <find>Please chose your Board Size</find>
+      <find>start game</find>
+      <find>buttonLevel</find>
+      <find>hard</find>
+      <find>interval</find>
+      <find>sound On</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -141,7 +138,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="1297" />
     <option name="height" value="1398" />
@@ -164,15 +161,6 @@
               <item name="MusicMemoryGame" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MusicMemoryGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="MusicMemoryGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="bootstrap" type="70bed36:NamedLibraryElementNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -181,7 +169,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yuicompressor-2.4.8.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
@@ -237,6 +225,7 @@
       <workItem from="1547922337129" duration="182000" />
       <workItem from="1550853914801" duration="2145000" />
       <workItem from="1550916755127" duration="1277000" />
+      <workItem from="1551688959083" duration="4341000" />
     </task>
     <task id="LOCAL-00001" summary="v0.1 Changed the MP3 to JS pure">
       <created>1544793829082</created>
@@ -403,7 +392,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60275000" />
+    <option name="totallyTimeSpent" value="64616000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -415,16 +404,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="1037" height="1118" extended-state="0" />
+    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.292" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11950617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Gerrit" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4962963" weight="0.32731137" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4977778" visible="true" weight="0.40300107" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4977778" weight="0.40300107" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32943678" />
@@ -544,18 +534,6 @@
     <MESSAGE value="Adding the option for 8 tiles" />
     <option name="LAST_COMMIT_MESSAGE" value="Adding the option for 8 tiles" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/js/app.js</url>
-          <line>520</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/global-types/node_modules/@types/jquery/JQuery.d.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -643,21 +621,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" selection-start-column="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2277">
+        <state>
           <caret line="99" column="52" selection-start-line="99" selection-start-column="52" selection-end-line="99" selection-end-column="52" />
-          <folding>
-            <marker date="1550219919084" expanded="true" signature="0:33" ph="..." />
-            <marker date="1550219919084" expanded="true" signature="0:4780" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -671,17 +638,24 @@
     <entry file="file://$PROJECT_DIR$/js/app.min.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="190" column="72" selection-start-line="190" selection-start-column="72" selection-end-line="190" selection-end-column="72" />
+        <state relative-caret-position="1016">
+          <caret line="283" column="69" selection-start-line="283" selection-start-column="58" selection-end-line="283" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="525" lean-forward="true" selection-start-line="525" selection-end-line="525" />
+        <state relative-caret-position="760">
+          <caret line="284" column="184" selection-start-line="284" selection-start-column="184" selection-end-line="284" selection-end-column="184" />
         </state>
       </provider>
     </entry>

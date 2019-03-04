@@ -6,6 +6,7 @@ let moves = 0;
 let counter = document.querySelector(".moves");
 let startedGame = false;
 let matchedCard = document.getElementsByClassName("match");
+let isInterval = 0;
 let openedCards = [];
 let lastMatchedNote = {};
 let leaderBoardByTime = {};
@@ -55,7 +56,7 @@ function startGame() {
 function validateStartingForm() {
     if (!$("#name").val()) {
         alert('Please insert a Name!');
-        location.reload(); 
+        location.reload();
     }
 }
 
@@ -89,7 +90,7 @@ function cardOpen() {
     let len = openedCards.length;
     if (len === 2) {
         moveCounter();
-        if (openedCards[0].type.substring(0,2) === openedCards[1].type.substring(0,2)) {
+        if (openedCards[0].type.substring(0, 2) === openedCards[1].type.substring(0, 2)) {
             lastMatchedNote = openedCards[0].type;
             matched();
         } else {
@@ -105,12 +106,12 @@ function matched() {
     openedCards[1].classList.remove("show", "open", "no-event");
 
     // Added by Ron
-    let num1 = (openedCards[0].type.substring(0,2)) * 2 - 120;
-    if (openedCards[0].type.substring(3,4) !== 'a') {
+    let num1 = (openedCards[0].type.substring(0, 2)) * 2 - 120;
+    if (openedCards[0].type.substring(3, 4) !== 'a') {
         num1++;
     }
-    let num2 = (openedCards[1].type.substring(0,2)) * 2 - 120;
-    if (openedCards[1].type.substring(3,4) !== 'a') {
+    let num2 = (openedCards[1].type.substring(0, 2)) * 2 - 120;
+    if (openedCards[1].type.substring(3, 4) !== 'a') {
         num2++;
     }
     array[num1] = false;
@@ -131,23 +132,23 @@ function unmatched() {
 
     // Added by Ron
     let checkAOrB = 1;
-    let num1 = (openedCards[0].type.substring(0,2)) * 2 - 120; //first card
-    if (openedCards[0].type.substring(3,4) !== 'a') {
+    let num1 = (openedCards[0].type.substring(0, 2)) * 2 - 120; //first card
+    if (openedCards[0].type.substring(3, 4) !== 'a') {
         checkAOrB = -1;
         num1++;
     }
-    let num2 = (openedCards[1].type.substring(0,2)) * 2 - 120; //second card
-    if (openedCards[1].type.substring(3,4) !== 'a') {
+    let num2 = (openedCards[1].type.substring(0, 2)) * 2 - 120; //second card
+    if (openedCards[1].type.substring(3, 4) !== 'a') {
         num2++;
     }
     let i;
     let matchToFirstCard = num1 + checkAOrB;  // the match for first card
     for (i = 0; i < array.length; i = i + 2) {
-        if((array[i] === true) && (array[i + 1] === true)) { // there is possible match
+        if ((array[i] === true) && (array[i + 1] === true)) { // there is possible match
             counterOfMistakes++;
             break;
         }
-        if(array[matchToFirstCard] === true) { // the player could match the first card he chose
+        if (array[matchToFirstCard] === true) { // the player could match the first card he chose
             counterOfMistakes++;
             break;
         }
@@ -157,12 +158,21 @@ function unmatched() {
     // End of addition
 
     disable();
-    setTimeout(function () {
-        openedCards[0].classList.remove("show", "open", "no-event", "unmatched");
-        openedCards[1].classList.remove("show", "open", "no-event", "unmatched");
-        enable();
-        openedCards = [];
-    }, 1100);
+    if (!isInterval) {
+        setTimeout(function () {
+            openedCards[0].classList.remove("show", "open", "no-event", "unmatched");
+            openedCards[1].classList.remove("show", "open", "no-event", "unmatched");
+            enable();
+            openedCards = [];
+        }, 1100);
+    } else {
+        setTimeout(function () {
+            openedCards[0].classList.remove("show", "open", "no-event", "unmatched");
+            openedCards[1].classList.remove("show", "open", "no-event", "unmatched");
+            enable();
+            openedCards = [];
+        }, 2200);
+    }
 }
 
 function disable() {
@@ -236,7 +246,7 @@ function congratulations() {
             // show congratulations modal
             modal.classList.add("show");
             // Posting to MongoDB
-            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes);
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes, isInterval);
             getCollectionFromMongo();
             //showing move, rating, time on modal
             document.getElementById("gamerName").innerHTML = $("#name").val();
@@ -254,7 +264,7 @@ function congratulations() {
             // show congratulations modal
             modal.classList.add("show");
             // Posting to MongoDB
-            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes);
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes, isInterval);
             getCollectionFromMongo();
             //showing move, rating, time on modal
             document.getElementById("gamerName").innerHTML = $("#name").val();
@@ -272,7 +282,7 @@ function congratulations() {
             // show congratulations modal
             modal.classList.add("show");
             // Posting to MongoDB
-            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes);
+            postToMongo($("#name").val(), moves, finalTime, gameLevel, gamePlay, sizeOfBoard, $("#age").val(), $("#musical").val(), $("#perfect_p").val(), counterOfMistakes, isInterval);
             getCollectionFromMongo();
             //showing move, rating, time on modal
             document.getElementById("gamerName").innerHTML = $("#name").val();
@@ -300,77 +310,136 @@ function playAgain() {
 
 function play(type) {
     let piano = Synth.createInstrument('piano');
-    switch (type.substring(0,2)) {
-        case "60":
-            piano.play('C', 4, 2);
-            break;
-        case "61":
-            piano.play('C#', 4, 2);
-            break;
-        case "62":
-            piano.play('D', 4, 2);
-            break;
-        case "63":
-            piano.play('D#', 4, 2);
-            break;
-        case "64":
-            piano.play('E', 4, 2);
-            break;
-        case "65":
-            piano.play('F', 4, 2);
-            break;
-        case "66":
-            piano.play('F#', 4, 2);
-            break;
-        case "67":
-            piano.play('G', 4, 2);
-            break;
-        case "68":
-            piano.play('G#', 4, 2);
-            break;
-        case "69":
-            piano.play('A', 4, 2);
-            break;
-        case "70":
-            piano.play('A#', 4, 2);
-            break;
-        case "71":
-            piano.play('B', 4, 2);
-            break;
-        case "72":
-            piano.play('C', 5, 2);
-            break;
+    if (!isInterval) {
+        switch (type.substring(0, 2)) {
+            case "60":
+                piano.play('C', 4, 2);
+                break;
+            case "61":
+                piano.play('C#', 4, 2);
+                break;
+            case "62":
+                piano.play('D', 4, 2);
+                break;
+            case "63":
+                piano.play('D#', 4, 2);
+                break;
+            case "64":
+                piano.play('E', 4, 2);
+                break;
+            case "65":
+                piano.play('F', 4, 2);
+                break;
+            case "66":
+                piano.play('F#', 4, 2);
+                break;
+            case "67":
+                piano.play('G', 4, 2);
+                break;
+            case "68":
+                piano.play('G#', 4, 2);
+                break;
+            case "69":
+                piano.play('A', 4, 2);
+                break;
+            case "70":
+                piano.play('A#', 4, 2);
+                break;
+            case "71":
+                piano.play('B', 4, 2);
+                break;
+            case "72":
+                piano.play('C', 5, 2);
+                break;
+        }
+    }
+    // isInterval
+    else {
+        switch (type.substring(0, 2)) {
+            case "60":
+                document.getElementById("BigSecunda").play();
+                break;
+            case "61":
+                document.getElementById("BigSeptola").play();
+                break;
+            case "62":
+                document.getElementById("BigSexta").play();
+                break;
+            case "63":
+                document.getElementById("BigThird").play();
+                break;
+            case "64":
+                document.getElementById("Octave").play();
+                break;
+            case "65":
+                document.getElementById("Quarta").play();
+                break;
+            case "66":
+                document.getElementById("Qvinta").play();
+                break;
+            case "67":
+                document.getElementById("SmallSecunda").play();
+                break;
+            case "68":
+                document.getElementById("SmallSeptola").play();
+                break;
+            case "69":
+                document.getElementById("SmallSexta").play();
+                break;
+            case "70":
+                document.getElementById("SmallThird").play();
+                break;
+            case "71":
+                document.getElementById("Triton").play();
+                break;
+            case "72":
+                document.getElementById("GospelChoir").play();
+                break;
+        }
     }
 }
 
 function convertMidiNumberToNote(midiNm) {
-    switch (midiNm.substring(0,2)) {
+    switch (midiNm.substring(0, 2)) {
         case "60":
-            return "Do";
+            if (isInterval) { return "Big Secunda" } else
+                return "Do";
         case "61":
-            return "Do #";
+            if (isInterval) { return "Big Septola" } else
+                return "Do #";
         case "62":
-            return "Re";
+            if (isInterval) { return "Big Sexta" } else
+                return "Re";
         case "63":
-            return "Re #";
+            if (isInterval) { return "Big Third" } else
+                return "Re #";
         case "64":
-            return "Mi";
+            if (isInterval) { return "Octave" } else
+                return "Mi";
         case "65":
-            return "Fa";
+            if (isInterval) { return "Quarta" } else
+                return "Fa";
         case "66":
-            return "Fa #";
+            if (isInterval) { return "Qvinta" } else
+                return "Fa #";
         case "67":
-            return "Sol";
+            if (isInterval) { return "Small Secunda" } else
+                return "Sol";
         case "68":
-            return "Sol #";
+            if (isInterval) { return "Small Septola" } else
+                return "Sol #";
         case "69":
-            return "La";
+            if (isInterval) { return "Small Sexta" } else
+                return "La";
         case "70":
-            return "La #";
+            if (isInterval) { return "Small Third" } else
+                return "La #";
         case "71":
-            return "Si";
+            if (isInterval) { return "Triton" } else
+                return "Si";
         case "72":
-            return "Do High";
+            if (isInterval) { return "Gospel Choir" } else
+                return "Do High";
     }
 }
 
@@ -406,6 +475,15 @@ $('#buttonLevel .btn').on('click', function () {
     }
 });
 
+// On Interval Button Click
+$('#interval .btn').on('click', function () {
+    if ($(this).val() === "0") {
+        isInterval = 0;
+    } else {
+        isInterval = 1;
+    }
+});
+
 // Board size button
 $('#boardSize .btn').on('click', function () {
     if ($(this).val() === "8") {
@@ -427,7 +505,7 @@ $(function () {
     })
 });
 
-function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoard, age, musical, perfect_p, counterOfMistakes) {
+function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoard, age, musical, perfect_p, counterOfMistakes, isInterval) {
     $.ajax({
         url: "https://api.mlab.com/api/1/databases/heroku_wnjdhw5n/collections/games_stats?apiKey=k_bMgbyw5w3iv9msEbm_H9gncX747FjQ",
         data: JSON.stringify({
@@ -441,6 +519,7 @@ function postToMongo(gamerName, finalMove, totalTime, level, gamePlay, sizeOfBoa
             "musical": musical,
             "perfect_p": perfect_p,
             "counterOfMistakes": counterOfMistakes,
+            "isInterval": isInterval,
             "UTCTime": Date.now()
         }),
         type: "POST",
@@ -480,11 +559,13 @@ function resetBoardToBlank() {
     let elements = document.getElementsByClassName("easy");
     for (let element of elements) {
         element.parentNode.style.display = "";
-    };
+    }
+    ;
     let elements2 = document.getElementsByClassName("harder");
     for (let element of elements2) {
         element.parentNode.style.display = "";
-    };
+    }
+    ;
     $("#card-deck").removeClass("hard");
 }
 
