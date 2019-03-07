@@ -387,13 +387,13 @@ function play(type) {
                 document.getElementById("SmallSexta").play();
                 break;
             case "70":
-                document.getElementById("SmallThird").play();
+                document.getElementById("GospelChoir").play();
                 break;
             case "71":
                 document.getElementById("Triton").play();
                 break;
             case "72":
-                document.getElementById("GospelChoir").play();
+                document.getElementById("SmallThird").play();
                 break;
         }
     }
@@ -432,13 +432,13 @@ function convertMidiNumberToNote(midiNm) {
             if (isInterval) { return "Small Sexta" } else
                 return "La";
         case "70":
-            if (isInterval) { return "Small Third" } else
+            if (isInterval) { return "Gospel Choir" } else
                 return "La #";
         case "71":
             if (isInterval) { return "Triton" } else
                 return "Si";
         case "72":
-            if (isInterval) { return "Gospel Choir" } else
+            if (isInterval) { return "Small Third" } else
                 return "Do High";
     }
 }
