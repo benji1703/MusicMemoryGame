@@ -14,6 +14,7 @@ let gameLevel = "Easy";
 let id = 0;
 let gamePlay = [];
 let sizeOfBoard;
+let to;
 
 //initialize array of false values. counterOfMistakes = 0
 let array = new Array(24).fill(false);
@@ -226,6 +227,9 @@ function startTimer() {
 function showNoteModal() {
     $("#popup3").addClass("show");
     document.getElementById("lastNote").innerHTML = convertMidiNumberToNote(lastMatchedNote);
+    to = setTimeout(function(){
+        $("#popup3").removeClass("show");
+    }, 3000);
 }
 
 function closeNoteModal() {
@@ -233,6 +237,7 @@ function closeNoteModal() {
 }
 
 function playLastMatchedNote() {
+    clearTimeout(to);
     play(lastMatchedNote);
 }
 
